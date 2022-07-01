@@ -1,25 +1,28 @@
 package vttp2022.task01;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 
 public class Main {
 
-    public static void main(String[] args) {
-    
-        Scanner n = new Scanner(System.in);
-        String firstName;
-        String lastName;
+    public static void main(String[] args) throws IOException {
 
-        System.out.println("Enter first name: ");
-        firstName = n.next();
+        String dataFile = args[0];
 
-        System.out.println("Enter last name: ");
-        lastName = n.next();
+        Particulars person = new Particulars();
 
-        String Username = firstName + lastName;
-        System.out.println(Username);
+        Reader r = new FileReader(dataFile);
+        BufferedReader br = new BufferedReader(r);
 
-        n.close();
+        String data = br.readLine();
 
+        while (null != data) {
+            data = br.readLine();
+            person.read(data);
+        }
+
+        person.generateReport();
     }
 }
