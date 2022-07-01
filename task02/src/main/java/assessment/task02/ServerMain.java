@@ -33,6 +33,7 @@ public class ServerMain {
         is.close();
         os.close();
         sock.close();
+        server.close();
     }
 
 }
